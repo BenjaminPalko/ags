@@ -1,6 +1,9 @@
 {
-    "name": "astal-shell",
-    "dependencies": {
-        "astal": "/usr/share/astal/gjs"
-    }
+  "name": "astal-shell",
+  "scripts": {
+    "start": "ags run --gtk4 -d ."
+  },
+  "dependencies": {
+    "astal": "/usr/share/astal/gjs"
+  }
 }
