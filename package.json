@@ -1,9 +1,13 @@
 {
   "name": "astal-shell",
   "scripts": {
-    "start": "ags run --gtk4 -d ."
+    "dev": "ags run --gtk4 -d .",
+    "dev:watch": "onchange -k -i '**/*.{scss,ts,tsx}' --exclude-path .gitignore -- ags run --gtk4 -d ."
   },
   "dependencies": {
     "astal": "/usr/share/astal/gjs"
+  },
+  "devDependencies": {
+    "onchange": "^7.1.0"
   }
 }
