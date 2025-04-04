@@ -6,6 +6,7 @@ import Mpris from "./Mpris";
 import OS from "./OS";
 import Pywal from "./Pywal";
 import Tray from "./Tray";
+import SwayNC from "./SwayNC";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -32,6 +33,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <Pywal />
           <Internet />
           <Calendar />
+          <SwayNC />
         </box>
       </centerbox>
     </window>
