@@ -23,6 +23,7 @@ function Internet() {
   return (
     <box>
       <label
+        cssClasses={["Label"]}
         label={bind(network, "wifi").as(
           (w) => `${icon(w.strength)}  ${w.strength}%`,
         )}
