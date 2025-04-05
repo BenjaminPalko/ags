@@ -8,11 +8,13 @@ $surface2: #5b6078;
 
 $rosewater: #f4dbd6;
 
+* {
+  color: $rosewater;
+  font-family: JetBrainsMono Nerd Font;
+}
+
 button {
   all: initial;
-}
-* {
-  font-family: JetBrainsMono Nerd Font;
 }
 
 window.Bar {
@@ -21,6 +23,7 @@ window.Bar {
 
   > centerbox {
     background: rgba($color: $base, $alpha: 0.75);
+    border-bottom: 1px solid $rosewater;
 
     > box {
       margin: 6px;
