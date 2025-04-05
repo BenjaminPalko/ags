@@ -8,6 +8,7 @@ import Pywal from "./Pywal";
 import Tray from "./Tray";
 import SwayNC from "./SwayNC";
 import WirePlumber from "./WirePlumber";
+import Memory from "./Memory";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -34,6 +35,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <Pywal />
           <WirePlumber />
           <Internet />
+          <Memory />
           <Calendar />
           <SwayNC />
         </box>
