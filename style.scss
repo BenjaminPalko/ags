@@ -11,14 +11,16 @@ $rosewater: #f4dbd6;
 button {
   all: initial;
 }
+* {
+  font-family: JetBrainsMono Nerd Font;
+}
 
 window.Bar {
-  font-family: JetBrainsMono Nerd Font;
   background: transparent;
   font-weight: bold;
 
   > centerbox {
-    background: $base;
+    background: rgba($color: $base, $alpha: 0.75);
 
     > box {
       margin: 6px;
@@ -42,7 +44,6 @@ window.Bar {
 
   .Pywal {
     font-size: 18px;
-    text-align: center;
     padding: 4px 18px 4px 12px;
     border-radius: 8px;
     background: $surface0;
@@ -72,5 +73,30 @@ window.Bar {
     padding: 4px 12px;
     border-radius: 8px;
     background: $surface0;
+  }
+
+  .Button-Active {
+    background: $rosewater;
+    color: $base;
+  }
+
+  .WirePlumberMenu {
+    contents {
+      all: initial;
+    }
+
+    arrow {
+      all: initial;
+    }
+
+    box {
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba($color: $base, $alpha: 0.9);
+
+      & > * {
+        margin: 2px 0;
+      }
+    }
   }
 }

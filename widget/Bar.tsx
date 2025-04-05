@@ -7,6 +7,7 @@ import OS from "./OS";
 import Pywal from "./Pywal";
 import Tray from "./Tray";
 import SwayNC from "./SwayNC";
+import WirePlumber from "./WirePlumber";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -31,6 +32,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         </box>
         <box halign={Gtk.Align.END}>
           <Pywal />
+          <WirePlumber />
           <Internet />
           <Calendar />
           <SwayNC />
