@@ -1,5 +1,7 @@
 import { bind, derive, Variable } from "astal";
+import { Gdk } from "astal/gtk4";
 import AstalMpris from "gi://AstalMpris";
+import { Mathf } from "../util/Mathf";
 
 function IntegerToMinuteSeconds(value: number) {
   const minutes = Math.floor(value / 60);
@@ -12,8 +14,9 @@ function FormatLabel(player: {
   artist: string;
   position: number;
   length: number;
+  status: AstalMpris.PlaybackStatus;
 }) {
-  return `${player.title} - ${player.artist} [${IntegerToMinuteSeconds(player.position)}/${IntegerToMinuteSeconds(player.length)}]`;
+  return `${player.status === AstalMpris.PlaybackStatus.PLAYING ? "" : ""} ${player.title} - ${player.artist} [${IntegerToMinuteSeconds(player.position)}/${IntegerToMinuteSeconds(player.length)}]`;
 }
 
 const Mpris = function () {
@@ -33,20 +36,40 @@ const Mpris = function () {
           const activePlayer = players[index];
 
           return (
-            <label
-              label={bind(
-                derive(
-                  [
-                    bind(activePlayer, "title"),
-                    bind(activePlayer, "artist"),
-                    bind(activePlayer, "position"),
-                    bind(activePlayer, "length"),
-                  ],
-                  (title, artist, position, length) =>
-                    FormatLabel({ title, artist, position, length }),
-                ),
-              )}
-            />
+            <button
+              cursor={Gdk.Cursor.new_from_name("pointer", null)}
+              onClicked={() =>
+                activePlayer.playbackStatus ===
+                AstalMpris.PlaybackStatus.PLAYING
+                  ? activePlayer.pause()
+                  : activePlayer.play()
+              }
+              onScroll={(_, __, dy) => {
+                activeIndex.set(
+                  Mathf.clamp(
+                    activeIndex.get() - Mathf.sign(dy),
+                    0,
+                    players.length - 1,
+                  ),
+                );
+              }}
+            >
+              <label
+                label={bind(
+                  derive(
+                    [
+                      bind(activePlayer, "title"),
+                      bind(activePlayer, "artist"),
+                      bind(activePlayer, "position"),
+                      bind(activePlayer, "length"),
+                      bind(activePlayer, "playback_status"),
+                    ],
+                    (title, artist, position, length, status) =>
+                      FormatLabel({ title, artist, position, length, status }),
+                  ),
+                )}
+              />
+            </button>
           );
         }),
       )}
