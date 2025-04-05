@@ -1,4 +1,4 @@
-import { bind, Variable } from "astal";
+import { bind, derive, Variable } from "astal";
 import AstalMpris from "gi://AstalMpris";
 
 function IntegerToMinuteSeconds(value: number) {
@@ -7,40 +7,49 @@ function IntegerToMinuteSeconds(value: number) {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
-function FormatLabel(player: AstalMpris.Player) {
+function FormatLabel(player: {
+  title: string;
+  artist: string;
+  position: number;
+  length: number;
+}) {
   return `${player.title} - ${player.artist} [${IntegerToMinuteSeconds(player.position)}/${IntegerToMinuteSeconds(player.length)}]`;
 }
 
 const Mpris = function () {
   const mpris = AstalMpris.get_default();
 
-  mpris.connect("player-added", () => {
-    players.set(mpris.players);
-  });
-  mpris.connect("player-closed", () => {
-    players.set(mpris.players);
-  });
+  const players = bind(mpris, "players");
+  const activeIndex = Variable(0);
 
-  const players = Variable<Array<AstalMpris.Player>>(mpris.players);
-
-  const label = Variable.derive([players], (players) => {
-    const player = players[0];
-    if (!player.title || !player.artist || !player.position || !player.length) {
-      return "";
-    }
-    return FormatLabel(player);
-  });
-
-  label.subscribe((value) => print(value));
+  bind(
+    derive([players, activeIndex], (players, index) => players[index]),
+  ).subscribe((value) => print(value.title));
 
   return (
     <box>
-      <label
-        label={bind(label)}
-        onScroll={(self, dx, dy) => {
-          dy > 0 ? print("BLING!") : print("BANG!");
-        }}
-      />
+      {bind(
+        derive([players, activeIndex], (players, index) => {
+          const activePlayer = players[index];
+
+          return (
+            <label
+              label={bind(
+                derive(
+                  [
+                    bind(activePlayer, "title"),
+                    bind(activePlayer, "artist"),
+                    bind(activePlayer, "position"),
+                    bind(activePlayer, "length"),
+                  ],
+                  (title, artist, position, length) =>
+                    FormatLabel({ title, artist, position, length }),
+                ),
+              )}
+            />
+          );
+        }),
+      )}
     </box>
   );
 };
