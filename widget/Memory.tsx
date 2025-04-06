@@ -7,12 +7,7 @@ const Memory = function () {
     (value) => Number(value),
   );
 
-  return (
-    <label
-      cssClasses={["Label"]}
-      label={bind(usage).as((usage) => `  ${usage.toFixed()} %`)}
-    />
-  );
+  return <label label={bind(usage).as((usage) => ` ${usage.toFixed()}%`)} />;
 };
 
 export default Memory;

@@ -30,7 +30,6 @@ const WirePlumber = function () {
           label={bind(defaultSpeaker, "volume").as(
             (volume) => `  ${Math.floor(volume * 100)}%`,
           )}
-          cssClasses={["Button"]}
           hasTooltip={true}
           tooltipText={bind(defaultSpeaker, "description").as(
             (description) => description,
@@ -41,8 +40,7 @@ const WirePlumber = function () {
             {speakers.map((speaker) => (
               <button
                 cssClasses={bind(speaker, "is_default").as((is_default) => [
-                  "Button",
-                  is_default ? "Button-Active" : "",
+                  is_default ? "active" : "",
                 ])}
                 cursor={Gdk.Cursor.new_from_name("pointer", null)}
                 onClicked={() => speaker.set_is_default(true)}

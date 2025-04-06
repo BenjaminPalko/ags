@@ -23,9 +23,8 @@ function Internet() {
   return (
     <box>
       <label
-        cssClasses={["Label"]}
         label={bind(network, "wifi").as(
-          (w) => `${icon(w.strength)}  ${w.strength}%`,
+          (w) => `${icon(w.strength)} ${w.strength}%`,
         )}
         hasTooltip={true}
         tooltip_text={bind(network, "wifi").as((w) => w.ssid)}

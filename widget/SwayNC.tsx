@@ -37,7 +37,6 @@ const SwayNC = function () {
   return (
     <button
       cursor={Gdk.Cursor.new_from_name("pointer", null)}
-      cssClasses={["Button"]}
       onClicked={() => exec("swaync-client -t -sw")}
       label={options().as((options) => Icon(options?.alt ?? "none"))}
     ></button>

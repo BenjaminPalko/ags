@@ -12,7 +12,7 @@ const Tray = function () {
   }
 
   return (
-    <box cssClasses={["Tray", "Label"]}>
+    <box cssClasses={["Tray"]}>
       {bind(trayItems).as((items) =>
         items.map((item) => {
           return (

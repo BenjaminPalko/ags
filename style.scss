@@ -7,19 +7,88 @@ $surface1: #494d64;
 $surface2: #5b6078;
 
 $rosewater: #f4dbd6;
+$flamingo: #dd7878;
+$pink: #ea76cb;
+$mauve: #8839ef;
 
-* {
-  color: $rosewater;
+:root {
   font-family: JetBrainsMono Nerd Font;
+  color: $mauve;
 }
 
 button {
   all: initial;
+
+  font-family: inherit;
+
+  label:hover {
+    color: $base;
+    background: $rosewater;
+  }
+}
+
+label {
+  all: initial;
+
+  font-family: inherit;
+  color: $mauve;
+  padding: 4px 12px;
+  background: $surface0;
+  border-radius: 8px;
+}
+
+.no-styles {
+  all: initial;
+}
+
+.active {
+  label {
+    background: $rosewater;
+    color: $base;
+  }
+}
+
+.Arch {
+  -gtk-icon-size: 24px;
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px;
+  background: $surface0;
+
+  &:hover {
+    background: $rosewater;
+    color: $base;
+  }
+}
+
+.Pywal {
+  label {
+    font-size: 18px;
+    padding: 6px 16px 6px 10px;
+  }
+}
+
+.Tray > * {
+  margin: 0 4px;
+}
+
+.WirePlumberMenu {
+  contents {
+    all: initial;
+  }
+
+  arrow {
+    all: initial;
+  }
+
+  box {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba($color: $base, $alpha: 0.9);
+  }
 }
 
 window.Bar {
   background: transparent;
-  font-weight: bold;
 
   > centerbox {
     background: rgba($color: $base, $alpha: 0.75);
@@ -29,76 +98,6 @@ window.Bar {
       margin: 6px;
       & > * {
         margin: 0 4px;
-      }
-    }
-  }
-
-  .Arch {
-    -gtk-icon-size: 24px;
-    padding: 4px 8px 4px 8px;
-    border-radius: 8px;
-    background: $surface0;
-
-    &:hover {
-      background: $rosewater;
-      color: $base;
-    }
-  }
-
-  .Pywal {
-    font-size: 18px;
-    padding: 4px 18px 4px 12px;
-    border-radius: 8px;
-    background: $surface0;
-
-    &:hover {
-      background: $rosewater;
-      color: $base;
-    }
-  }
-
-  .Tray > * {
-    margin: 0 4px;
-  }
-
-  .Button {
-    padding: 4px 12px;
-    border-radius: 8px;
-    background: $surface0;
-
-    &:hover {
-      background: $rosewater;
-      color: $base;
-    }
-  }
-
-  .Label {
-    padding: 4px 12px;
-    border-radius: 8px;
-    background: $surface0;
-  }
-
-  .Button-Active {
-    background: $rosewater;
-    color: $base;
-  }
-
-  .WirePlumberMenu {
-    contents {
-      all: initial;
-    }
-
-    arrow {
-      all: initial;
-    }
-
-    box {
-      padding: 12px;
-      border-radius: 8px;
-      background: rgba($color: $base, $alpha: 0.9);
-
-      & > * {
-        margin: 2px 0;
       }
     }
   }
