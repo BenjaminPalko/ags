@@ -1,5 +1,5 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gdk, Gtk } from "astal/gtk4";
 import AstalTray from "gi://AstalTray";
 
 const Tray = function () {
@@ -16,7 +16,7 @@ const Tray = function () {
       {trayItems.as((items) =>
         items.map((item) => {
           return (
-            <menubutton>
+            <menubutton cursor={Gdk.Cursor.new_from_name("pointer", null)}>
               <image
                 tooltip_text={item.title || item.tooltip.title}
                 file={item.iconName || "NONE"}

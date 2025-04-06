@@ -9,6 +9,7 @@ import Tray from "./Tray";
 import SwayNC from "./SwayNC";
 import WirePlumber from "./WirePlumber";
 import Memory from "./Memory";
+import Workspaces from "./Hyprland/workspaces";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -25,6 +26,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       <centerbox cssName="centerbox">
         <box halign={Gtk.Align.START}>
           <OS />
+          <Workspaces />
           <Tray />
           <Hyprland.Client />
         </box>
