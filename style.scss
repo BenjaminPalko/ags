@@ -65,8 +65,16 @@ label {
   }
 }
 
-.Tray > * {
+.Tray {
   margin: 0 4px;
+}
+
+.Tray > * {
+  margin: 0 6px;
+
+  image {
+    -gtk-icon-size: 20px;
+  }
 }
 
 .Workspaces {

@@ -1,4 +1,3 @@
-import { bind } from "astal";
 import { exec, Variable } from "astal";
 import { Gdk } from "astal/gtk4";
 
@@ -38,7 +37,7 @@ const SwayNC = function () {
     <button
       cursor={Gdk.Cursor.new_from_name("pointer", null)}
       onClicked={() => exec("swaync-client -t -sw")}
-      label={options().as((options) => Icon(options?.alt ?? "none"))}
+      label={options().as((options) => ` ${Icon(options?.alt ?? "none")} `)}
     ></button>
   );
 };
