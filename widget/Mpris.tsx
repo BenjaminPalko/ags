@@ -35,6 +35,10 @@ const Mpris = function () {
         derive([players, activeIndex], (players, index) => {
           const activePlayer = players[index];
 
+          if (!activePlayer) {
+            return <></>;
+          }
+
           return (
             <button
               cursor={Gdk.Cursor.new_from_name("pointer", null)}
