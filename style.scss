@@ -44,6 +44,15 @@ label {
   border-radius: 8px;
 }
 
+popover > contents {
+  all: initial;
+
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 4px solid $crust;
+  background: rgba($color: $base, $alpha: 0.75);
+}
+
 .no-styles {
   all: initial;
 
@@ -108,15 +117,6 @@ label {
 }
 
 .WirePlumberMenu {
-  contents {
-    all: initial;
-
-    padding: 4px 12px;
-    border-radius: 8px;
-    border: 4px solid $crust;
-    background: rgba($color: $base, $alpha: 0.75);
-  }
-
   arrow {
     all: initial;
   }
@@ -159,11 +159,6 @@ label {
         border: 3px solid $rosewater;
       }
     }
-
-    padding: 4px 12px;
-    border-radius: 8px;
-    border: 4px solid $crust;
-    background: rgba($color: $base, $alpha: 0.75);
   }
 
   arrow {
