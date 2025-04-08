@@ -9,9 +9,8 @@ const OS = function () {
       hexpand
       halign={Gtk.Align.START}
       cssClasses={["Arch"]}
-    >
-      <image iconName={GLib.get_os_info("LOGO") || "missing-symbolic"} />
-    </button>
+      iconName={GLib.get_os_info("LOGO") || "missing-symbolic"}
+    />
   );
 };
 

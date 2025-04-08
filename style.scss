@@ -21,11 +21,15 @@ button {
   font-family: inherit;
 
   label {
+    transition:
+      border 0.5s,
+      background 0.5s;
     background: $mantle;
   }
 
   label:hover {
     background: $crust;
+    border: 3px solid $rosewater;
   }
 }
 
@@ -36,7 +40,7 @@ label {
   color: $rosewater;
   padding: 2px 12px;
   background: $crust;
-  border: 4px solid $crust;
+  border: 3px solid $crust;
   border-radius: 8px;
 }
 
@@ -56,11 +60,15 @@ label {
   -gtk-icon-size: 24px;
   padding: 4px 8px;
   border-radius: 8px;
-  border: 4px solid $crust;
+  border: 3px solid $crust;
   background: $mantle;
+  transition:
+    border 0.5s,
+    background 0.5s;
 
   &:hover {
     background: $crust;
+    border: 3px solid $rosewater;
   }
 }
 
@@ -120,14 +128,36 @@ label {
 
 .CalendarMenu {
   contents {
-    // all: initial;
-
-    grid button {
+    button {
       margin: 4px;
+      padding: 4px;
+      border-radius: 8px;
+      background: $crust;
+      transition:
+        border 0.5s,
+        background 0.5s;
+
+      &:hover {
+        color: $crust;
+        background: $rosewater;
+      }
     }
 
     label {
       margin: 4px;
+    }
+
+    .today {
+      border: 3px solid $rosewater;
+    }
+
+    .other-month {
+      color: $surface0;
+      transition: border 0.5s;
+
+      &:hover {
+        border: 3px solid $rosewater;
+      }
     }
 
     padding: 4px 12px;
