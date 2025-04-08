@@ -1,9 +1,10 @@
 import { GLib } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gdk, Gtk } from "astal/gtk4";
 
 const OS = function () {
   return (
     <button
+      cursor={Gdk.Cursor.new_from_name("pointer", null)}
       onClicked="echo hello"
       hexpand
       halign={Gtk.Align.START}

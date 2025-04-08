@@ -35,10 +35,11 @@ const SwayNC = function () {
 
   return (
     <button
+      cssClasses={["SwayNC"]}
       cursor={Gdk.Cursor.new_from_name("pointer", null)}
       onClicked={() => exec("swaync-client -t -sw")}
-      label={options().as((options) => ` ${Icon(options?.alt ?? "none")} `)}
-    ></button>
+      label={options().as((options) => `${Icon(options?.alt ?? "none")}`)}
+    />
   );
 };
 

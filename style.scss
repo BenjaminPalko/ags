@@ -13,13 +13,16 @@ $mauve: #8839ef;
 
 :root {
   font-family: JetBrainsMono Nerd Font;
-  color: $mauve;
 }
 
 button {
   all: initial;
 
   font-family: inherit;
+
+  label {
+    background: $mantle;
+  }
 
   label:hover {
     background: $crust;
@@ -30,15 +33,17 @@ label {
   all: initial;
 
   font-family: inherit;
-  color: $mauve;
-  padding: 4px 12px;
-  background: $mantle;
+  color: $rosewater;
+  padding: 2px 12px;
+  background: $crust;
   border: 4px solid $crust;
   border-radius: 8px;
 }
 
 .no-styles {
   all: initial;
+
+  color: $rosewater;
 }
 
 .active {
@@ -49,12 +54,13 @@ label {
 
 .Arch {
   -gtk-icon-size: 24px;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: 8px;
-  background: $crust;
+  border: 4px solid $crust;
+  background: $mantle;
 
   &:hover {
-    background: $surface0;
+    background: $crust;
   }
 }
 
@@ -62,6 +68,12 @@ label {
   label {
     font-size: 18px;
     padding: 6px 16px 6px 10px;
+  }
+}
+
+.SwayNC {
+  label {
+    padding: 0 12px;
   }
 }
 
@@ -79,19 +91,22 @@ label {
 
 .Workspaces {
   background: $mantle;
-  padding: 2px;
-  margin: 2px;
   border-radius: 8px;
   border: 4px solid $crust;
 
   > * {
-    margin: 4px;
+    margin: 2px;
   }
 }
 
 .WirePlumberMenu {
   contents {
     all: initial;
+
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 4px solid $crust;
+    background: rgba($color: $base, $alpha: 0.75);
   }
 
   arrow {
@@ -101,12 +116,28 @@ label {
   button {
     margin: 4px 0;
   }
+}
 
-  box {
+.CalendarMenu {
+  contents {
+    // all: initial;
+
+    grid button {
+      margin: 4px;
+    }
+
+    label {
+      margin: 4px;
+    }
+
     padding: 4px 12px;
     border-radius: 8px;
     border: 4px solid $crust;
-    background: rgba($color: $mantle, $alpha: 0.9);
+    background: rgba($color: $base, $alpha: 0.75);
+  }
+
+  arrow {
+    all: initial;
   }
 }
 

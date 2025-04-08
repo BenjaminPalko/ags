@@ -12,7 +12,7 @@ function Calendar() {
         label={time().as((t) => ` ${t}`)}
         tooltip_text={date().as((d) => `󰸗  ${d}`)}
       />
-      <popover>
+      <popover cssClasses={["CalendarMenu"]}>
         <Gtk.Calendar />
       </popover>
     </menubutton>
