@@ -1,15 +1,16 @@
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
+import Bluetooth from "./Bluetooth";
 import Calendar from "./Calendar";
 import Hyprland from "./Hyprland";
+import Workspaces from "./Hyprland/workspaces";
 import Internet from "./Internet";
+import Memory from "./Memory";
 import Mpris from "./Mpris";
 import OS from "./OS";
 import Pywal from "./Pywal";
-import Tray from "./Tray";
 import SwayNC from "./SwayNC";
+import Tray from "./Tray";
 import WirePlumber from "./WirePlumber";
-import Memory from "./Memory";
-import Workspaces from "./Hyprland/workspaces";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -37,6 +38,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <Pywal />
           <WirePlumber />
           <Internet />
+          <Bluetooth />
           <Memory />
           <Calendar />
           <SwayNC />

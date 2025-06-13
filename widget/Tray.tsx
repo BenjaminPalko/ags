@@ -2,6 +2,16 @@ import { bind } from "astal";
 import { Gdk } from "astal/gtk4";
 import AstalTray from "gi://AstalTray";
 
+const TrayItemPopover = function ({ item }: { item: AstalTray.TrayItem }) {
+  const actionGroup = bind(item, "actionGroup");
+
+  return (
+    <popover>
+      <box>{actionGroup.get()}</box>
+    </popover>
+  );
+};
+
 const Tray = function () {
   const tray = AstalTray.get_default();
 
@@ -19,6 +29,7 @@ const Tray = function () {
                   (iconName) => iconName || "NONE",
                 )}
               />
+              <TrayItemPopover item={item} />
             </menubutton>
           );
         }),
