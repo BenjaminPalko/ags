@@ -1,41 +1,30 @@
 import { bind } from "astal";
-import { Gdk } from "astal/gtk4";
+import { Gdk, Gtk } from "astal/gtk4";
 import AstalTray from "gi://AstalTray";
 
-const TrayItemPopover = function ({ item }: { item: AstalTray.TrayItem }) {
-  const actionGroup = bind(item, "actionGroup");
+const TrayItem = function ({ item }: { item: AstalTray.TrayItem }) {
+	const popover = Gtk.PopoverMenu.new_from_model(item.menu_model);
+	popover.insert_action_group("dbusmenu", item.action_group);
 
-  return (
-    <popover>
-      <box>{actionGroup.get()}</box>
-    </popover>
-  );
+	return (
+		<menubutton
+			cursor={Gdk.Cursor.new_from_name("pointer", null)}
+			icon_name={item.icon_name}
+			popover={popover}
+		/>
+	);
 };
 
 const Tray = function () {
-  const tray = AstalTray.get_default();
+	const tray = AstalTray.get_default();
 
-  const trayItems = bind(tray, "items");
-
-  return (
-    <box cssClasses={["Tray"]}>
-      {trayItems.as((items) =>
-        items.map((item) => {
-          return (
-            <menubutton cursor={Gdk.Cursor.new_from_name("pointer", null)}>
-              <image
-                tooltip_text={bind(item, "tooltip_markup")}
-                file={bind(item, "icon_name").as(
-                  (iconName) => iconName || "NONE",
-                )}
-              />
-              <TrayItemPopover item={item} />
-            </menubutton>
-          );
-        }),
-      )}
-    </box>
-  );
+	return (
+		<box cssClasses={["Tray"]}>
+			{bind(tray, "items").as((items) =>
+				items.map((item) => TrayItem({ item })),
+			)}
+		</box>
+	);
 };
 
 export default Tray;

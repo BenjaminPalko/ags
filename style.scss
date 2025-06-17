@@ -1,15 +1,16 @@
-$crust: #181926;
-$mantle: #1e2030;
-$base: #24273a;
+$primary: #1fb854;
+$secondary: #1eb88e;
+$accent: #1fb8ab;
+$neutral: #19362d;
+$base100: #1b1717;
+$base200: #161212;
+$base300: #110d0d;
+$basecontent: #cac9c9;
 
-$surface0: #363a4f;
-$surface1: #494d64;
-$surface2: #5b6078;
-
-$rosewater: #f4dbd6;
-$flamingo: #dd7878;
-$pink: #ea76cb;
-$mauve: #8839ef;
+$info: #00b5ff;
+$success: #00a96e;
+$warning: #ffbe00;
+$error: #ff5861;
 
 :root {
   font-family: JetBrainsMono Nerd Font;
@@ -22,14 +23,16 @@ button {
 
   label {
     transition:
-      border 0.5s,
-      background 0.5s;
-    background: $mantle;
+      border 0.35s,
+      background 0.35s,
+      color 0.35s;
+    background: $base100;
   }
 
   label:hover {
-    background: $crust;
-    border: 3px solid $rosewater;
+    background: $primary;
+    color: $base300;
+    // border: 3px solid $primary;
   }
 }
 
@@ -37,10 +40,10 @@ label {
   all: initial;
 
   font-family: inherit;
-  color: $rosewater;
-  padding: 2px 12px;
-  background: $crust;
-  border: 3px solid $crust;
+  font-size: 14px;
+  color: $basecontent;
+  padding: 0 12px;
+  // background: $base200;
   border-radius: 8px;
 }
 
@@ -49,53 +52,48 @@ popover > contents {
 
   padding: 4px 12px;
   border-radius: 8px;
-  border: 4px solid $crust;
-  background: rgba($color: $base, $alpha: 0.75);
+  border: 4px solid $base200;
+  background: rgba($color: $base100, $alpha: 0.98);
 }
 
 .no-styles {
   all: initial;
 
-  color: $rosewater;
+  color: $primary;
 }
 
 .active {
   label {
-    background: $crust;
+    background: $secondary;
+    color: $base300;
   }
 }
 
 .Arch {
-  -gtk-icon-size: 24px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 3px solid $crust;
-  background: $mantle;
-  transition:
-    border 0.5s,
-    background 0.5s;
-
-  &:hover {
-    background: $crust;
-    border: 3px solid $rosewater;
-  }
+  -gtk-icon-size: 22px;
+  padding: 0 6px;
 }
 
 .Pywal {
   label {
-    font-size: 18px;
-    padding: 6px 16px 6px 10px;
+    font-size: 16px;
+    padding: 4px 16px 4px 10px;
   }
 }
 
 .SwayNC {
   label {
+    font-size: 16px;
     padding: 0 12px;
   }
 }
 
 .Tray {
   margin: 0 4px;
+
+  arrow {
+    all: initial;
+  }
 }
 
 .Tray > * {
@@ -107,12 +105,11 @@ popover > contents {
 }
 
 .Workspaces {
-  background: $mantle;
-  border-radius: 8px;
-  border: 4px solid $crust;
+  // background: $base300;
+  // border-radius: 8px;
 
   > * {
-    margin: 2px;
+    margin: 0 2px;
   }
 }
 
@@ -132,14 +129,14 @@ popover > contents {
       margin: 4px;
       padding: 4px;
       border-radius: 8px;
-      background: $crust;
+      background: $base200;
       transition:
         border 0.5s,
         background 0.5s;
 
       &:hover {
-        color: $crust;
-        background: $rosewater;
+        color: $base300;
+        background: $primary;
       }
     }
 
@@ -148,15 +145,15 @@ popover > contents {
     }
 
     .today {
-      border: 3px solid $rosewater;
+      border: 3px solid $primary;
     }
 
     .other-month {
-      color: $surface0;
+      color: $accent;
       transition: border 0.5s;
 
       &:hover {
-        border: 3px solid $rosewater;
+        border: 3px solid $secondary;
       }
     }
   }
@@ -168,15 +165,19 @@ popover > contents {
 
 window.Bar {
   background: transparent;
+  padding: 4px;
 
   > centerbox {
-    background: rgba($color: $base, $alpha: 0.75);
-    border-bottom: 4px solid $crust;
+    border-radius: 8px;
+
+    background-color: $base300;
+    // background: rgba($color: $base300, $alpha: 0.75);
+    // border-bottom: 4px solid $base200;
 
     > box {
-      margin: 6px;
+      margin: 5px 2px;
       & > * {
-        margin: 0 4px;
+        margin: 0 3px;
       }
     }
   }
